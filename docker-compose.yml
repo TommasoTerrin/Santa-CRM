@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres-datapizza-christmas
+    environment:
+      POSTGRES_USER: ${POSTGRES_BOOTSTRAP_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_BOOTSTRAP_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_BOOTSTRAP_DB}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_BOOTSTRAP_USER} -d ${POSTGRES_BOOTSTRAP_DB} || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  metabase:
+    image: metabase/metabase:latest
+    container_name: metabase-datapizza-christmas
+    ports:
+      - "${METABASE_PORT}:3000"
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_HOST: postgres
+      MB_DB_PORT: 5432
+      MB_DB_DBNAME: ${POSTGRES_BOOTSTRAP_DB}
+      MB_DB_USER: ${POSTGRES_BOOTSTRAP_USER}
+      MB_DB_PASS: ${POSTGRES_BOOTSTRAP_PASSWORD}
+      MB_JETTY_HOST: 0.0.0.0
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+
