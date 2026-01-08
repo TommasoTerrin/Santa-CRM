@@ -10,8 +10,6 @@ Il sistema è composto da **due moduli principali**, ciascuno pensato per allegg
 
 ---
 
-![Slide 1](https://github.com/user-attachments/assets/74e6ba14-c787-40c7-93de-642e470e1f79)
-
 
 https://github.com/user-attachments/assets/fb14454e-0e50-4102-9fbc-60e75297bbc5
 
@@ -71,9 +69,6 @@ Questo lavoro richiede settimane di straordinari notturni per gli Elfi. E diciam
 
 ### Nota
 Attualmente il modulo `Elf-ETL module` è in fase di sviluppo. Per permettere i test end-to-end, il suo funzionamento viene **simulato** dal modulo `Fake-ETL-u-make-it`, che genera dati sintetici realistici di bambini e letterine.
-
-![Slide 3](https://github.com/user-attachments/assets/8e6be806-1ed0-4e76-b558-de6380df27e0)
-
 
 ---
 
