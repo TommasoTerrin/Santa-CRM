@@ -42,8 +42,11 @@ class LetterExtractor:
         self.logger.setLevel(logging.INFO)
         # Create handlers if not exist
         if not self.logger.handlers:
-            os.makedirs("logs", exist_ok=True)
-            fh = logging.FileHandler("logs/spam_tracing.log")
+            # Use path relative to this file's module root (Elf-ETL module)
+            base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            log_dir = os.path.join(base_dir, "logs")
+            os.makedirs(log_dir, exist_ok=True)
+            fh = logging.FileHandler(os.path.join(log_dir, "spam_tracing.log"))
             fh.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
             self.logger.addHandler(fh)
 

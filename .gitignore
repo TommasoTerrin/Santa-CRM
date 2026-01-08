@@ -20,8 +20,11 @@ env/
 database/
 
 # Logs
-logs/
+**/logs/
 *.log
+pipeline.log
+grinch_blocked.log
+spam_tracing.log
 
 # Docker
 docker-data/

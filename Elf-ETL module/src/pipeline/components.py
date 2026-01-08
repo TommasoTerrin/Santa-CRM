@@ -18,8 +18,11 @@ from core.schemas import LetterExtraction, ChildData
 logger = logging.getLogger("ElfPipeline")
 logger.setLevel(logging.INFO)
 if not logger.handlers:
-    os.makedirs("logs", exist_ok=True)
-    fh = logging.FileHandler("logs/pipeline.log")
+    # Use path relative to this file's module root (Elf-ETL module)
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    log_dir = os.path.join(base_dir, "logs")
+    os.makedirs(log_dir, exist_ok=True)
+    fh = logging.FileHandler(os.path.join(log_dir, "pipeline.log"))
     fh.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
     logger.addHandler(fh)
 
@@ -79,8 +82,10 @@ class GrinchLogger(PipelineComponent):
         # Log to dedicated spam log
         spam_logger = logging.getLogger("GrinchLog")
         if not spam_logger.handlers:
-             os.makedirs("logs", exist_ok=True)
-             fh = logging.FileHandler("logs/grinch_blocked.log")
+             base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+             log_dir = os.path.join(base_dir, "logs")
+             os.makedirs(log_dir, exist_ok=True)
+             fh = logging.FileHandler(os.path.join(log_dir, "grinch_blocked.log"))
              fh.setFormatter(logging.Formatter('%(asctime)s - SPAM - %(message)s'))
              spam_logger.addHandler(fh)
              spam_logger.setLevel(logging.INFO)
