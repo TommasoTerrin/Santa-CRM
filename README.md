@@ -2,7 +2,7 @@
 
 > *"Ogni anno, milioni di letterine arrivano al Polo Nord. Ma come fa Babbo Natale a gestire tutte quelle richieste, capire chi è stato buono e chi no, e soprattutto... decidere chi merita il carbone?"*
 
-Benvenuto in **Merry CRM**, il sistema CRM (Customer Relationship Management) più *merry* del mondo! 🎄
+Benvenuto in **Merry CRM**, il sistema CRM (Customer Relationship Management) AI usato da nientemeno che Babbo Natale!!! 🎄
 
 Questo progetto nasce per risolvere un problema antico quanto il Natale stesso: trasformare montagne di letterine scritte a mano in **dati analizzabili**, e poi permettere a Babbo Natale di prendere decisioni basate sui dati... senza dover imparare SQL!
 
